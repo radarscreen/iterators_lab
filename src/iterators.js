@@ -5,8 +5,26 @@ var Iterators = {
   // - tripler([7,50,4]) should return [21,150,12].
   // Use `map` to accomplish this.
   tripler: function (numbers) {
+    numbersthree = numbers.map(function (num) {
+      return num * 3;
+    });
+    return numbersthree;
   },
 
+
+  //   hasInstructor: function (names) {
+  //   return names.some(function (person) {
+  //     person = person.toLowerCase();
+  //     return person == "tim" || person == "alex" || person == "elie";
+  //   });
+  // },
+
+//var numbers = [1, 4, 9];
+//var doubles = numbers.map(function(num) {
+  //return num * 2;
+
+
+// });
   // perfectSquares() should take an array of numbers as a parameter
   // and return an array that contains only the numbers from the
   // argument that have whole numbers as their square roots. For
@@ -16,7 +34,21 @@ var Iterators = {
   // - perfectSquares([1,4,9]) should return [1,4,9].
   // Use `filter` to accomplish this.
   perfectSquares: function (numbers) {
+    var roots = numbers.filter(function (num){
+      return Math.sqrt(num)%1===0;
+    });
+      return roots;
   },
+
+
+
+    perfectSquares: function (numbers) {
+    return numbers.filter(function (num) {
+      var sqrt = Math.sqrt(num);
+      return sqrt == Math.round(sqrt);
+    });
+  },
+  
 
   // product() should accept an array of numbers as a parameter
   // and return the product of multiplying all those numbers together.
@@ -26,6 +58,10 @@ var Iterators = {
   // - product([100,200,300]) should return 6000000.
   // Use `reduce` to accomplish this.
   product: function (numbers) {
+    var multiply = numbers.reduce(function (a, b) {
+          return a * b;
+    });
+    return multiply;
   },
 
   // hasInstructor() accepts an array of names and should return true
@@ -38,8 +74,24 @@ var Iterators = {
   // - hasInstructor(["Bob", "Tim", "Jen"]) should return true.
   // Use `some` to accomplish this.
   // Hint: see `toLowerCase`, it could be useful.
+  
   hasInstructor: function (names) {
+    var isInstructor = function(name){
+      return ["tim", "elie", "alex"].some(function(instructor){
+        return instructor === name.toLowerCase();
+      });
+    };
+    return names.some(isInstructor);
   },
+
+//instructor's answer:*************************
+  // hasInstructor: function (names) {
+  //   return names.some(function (person) {
+  //     person = person.toLowerCase();
+  //     return person == "tim" || person == "alex" || person == "elie";
+  //   });
+  // },****************************************
+
 
   // allSamePlayer() should accept an array of players, represented by
   // X's and O's. The players array may also contain empty spots, which
@@ -53,7 +105,24 @@ var Iterators = {
   // - allSamePlayer(["_","_","_"]) should return false.
   // Use `every` to accomplish this.
   allSamePlayer: function (players) {
+   
+
+
+
   },
+
+
+//instructor's answer: **********************
+  //   allSamePlayer: function (players) {
+  //   var first = players[0];
+  //   if (first !== "X" && first !== "O") {
+  //     return false;
+  //   }
+  //   return players.every(function (character) {
+  //     return character === first;
+  //   });
+  // },***************************************
+
 
   // Also not an iterator metheod, necessarily. devowel() takes a
   // string as a parameter and returns the same string with all of the
@@ -68,7 +137,16 @@ var Iterators = {
   // - devowel("Howdy") should return "Hwdy",
   // - devowel("Phone's ringing, dude.") should return "Phn's rngng, dd.".
   devowel: function (text) {
+      var vowels = ["a", "e", "i", "o", "u"]
   }
 };
+
+// // Solution using .split(), .join(), and .filter().
+//     var vowels = ["a", "e", "i", "o", "u"];
+//     return text.split("").filter(function (character) {
+//       return vowels.indexOf(character) === -1;
+//     }).join("");
+//   }
+// };
 
 module.exports = Iterators;
